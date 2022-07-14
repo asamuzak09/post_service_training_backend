@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
+    kotlin("plugin.serialization") version "1.4.10"
 }
 
 group = "com.example"
@@ -21,6 +22,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.postgresql:postgresql:42.3.6")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
 }
 
 tasks.withType<KotlinCompile> {

@@ -1,0 +1,22 @@
+---
+
+version: '3.8'
+
+services:
+  #
+  # PostgreSQL
+  #
+  post-service-training-pg:
+    image: postgres:14-bullseye
+    container_name: post-service-training-pg
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: post-service-training
+      POSTGRES_INIT_DB_ARGS: --encoding=UTF-8
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./db/initdb:/docker-entrypoint-initdb.d

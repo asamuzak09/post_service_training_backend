@@ -19,6 +19,9 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: post-service-training
+        volumes:
+          - ./postgres_data:/var/lib/postgresql/data
+          - ./db/initdb:/docker-entrypoint-initdb.d
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
@@ -32,6 +35,8 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Make gradlew executable
         run: chmod +x ./gradlew
+      - name: DB migration
+        run: ./gradlew flywayMigrate
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:

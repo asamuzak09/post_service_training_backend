@@ -1,2 +1,1 @@
-CREATE DATABASE post-service-training;
-CREATE DATABASE post-service-training-test;
+CREATE DATABASE "post-service-training";

@@ -19,9 +19,6 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: post-service-training
-        volumes:
-          - data:/var/lib/postgresql/data
-          - db/initdb:/docker-entrypoint-initdb.d
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:

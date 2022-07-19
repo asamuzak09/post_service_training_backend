@@ -40,7 +40,7 @@ tasks.withType<Test> {
 }
 
 tasks.register("migrateDevelopment", org.flywaydb.gradle.task.FlywayMigrateTask::class){
-    url = "jdbc:postgresql://127.0.0.1:5432/post-service-training-test"
+    url = "jdbc:postgresql://127.0.0.1:5432/post-service-training"
     user = "postgres"
     password = "password"
 }

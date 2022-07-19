@@ -39,9 +39,14 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-flyway {
-    driver = "org.postgresql.Driver"
-    url = "jdbc:postgresql://localhost:5432/post-service-training"
+tasks.register("migrateDevelopment", org.flywaydb.gradle.task.FlywayMigrateTask::class){
+    url = "jdbc:postgresql://127.0.0.1:5432/post-service-training-test"
+    user = "postgres"
+    password = "password"
+}
+
+tasks.register("migrateTest", org.flywaydb.gradle.task.FlywayMigrateTask::class){
+    url = "jdbc:postgresql://127.0.0.1:5432/post-service-training-test"
     user = "postgres"
     password = "password"
 }

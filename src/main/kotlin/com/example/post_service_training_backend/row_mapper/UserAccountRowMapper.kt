@@ -7,6 +7,7 @@ import java.sql.ResultSet
 class UserAccountRowMapper : RowMapper<UserAccountDomainModel> {
     override fun mapRow(rs: ResultSet, rowNum: Int): UserAccountDomainModel {
         return UserAccountDomainModel(
+                rs.getString("name"),
                 rs.getString("account_id"),
                 rs.getInt("id"),
         )

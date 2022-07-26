@@ -11,12 +11,18 @@ class UserAccountRepository {
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate
 
-    fun create(accountId: String, encryptPassword: String): UserAccountDomainModel? {
-        val insertSql = "INSERT INTO users(account_id, encrypt_password) VALUES (?, ?);"
-        jdbcTemplate.update(insertSql, accountId, encryptPassword)
+    fun create(name: String, accountId: String, encryptPassword: String): UserAccountDomainModel? {
+        val insertSql = "INSERT INTO users(name, account_id, encrypt_password) VALUES (?, ?, ?);"
+        jdbcTemplate.update(insertSql, name, accountId, encryptPassword)
 
         val readSql = ("SELECT * FROM users WHERE account_id = ?")
 
         return jdbcTemplate.queryForObject(readSql, UserAccountRowMapper(), accountId)
+    }
+
+    fun validateSignIn(accountId: String, encryptPassword: String): UserAccountDomainModel?{
+        val readSql = ("SELECT * FROM users WHERE account_id = ? AND encrypt_password = ?")
+
+        return jdbcTemplate.queryForObject(readSql, UserAccountRowMapper(), accountId, encryptPassword)
     }
 }

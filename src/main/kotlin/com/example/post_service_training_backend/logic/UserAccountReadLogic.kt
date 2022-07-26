@@ -6,11 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class UserAccountCommandLogic {
+class UserAccountReadLogic {
     @Autowired
     lateinit var userAccountRepository: UserAccountRepository
 
-    fun create(name: String, accountId: String, encryptPassword: String): UserAccountDomainModel? {
-        return userAccountRepository.create(name, accountId, encryptPassword)
+    fun validateSignIn(accountId: String, encryptPassword: String): UserAccountDomainModel? {
+        try {
+            return userAccountRepository.validateSignIn(accountId, encryptPassword)
+        }catch (e: Exception){
+            throw Error("認証失敗")
+        }
+
     }
 }

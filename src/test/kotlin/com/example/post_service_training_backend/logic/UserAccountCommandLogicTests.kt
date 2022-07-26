@@ -15,7 +15,7 @@ class UserAccountCommandLogicTests {
     @Test
     fun create() {
         val accountId = "asamuzak"
-        val userAccountDomain = userAccountCommandLogic.create(accountId, "encryptPasswordExample")
+        val userAccountDomain = userAccountCommandLogic.create("name", accountId, "encryptPasswordExample")
         assertThat(userAccountDomain?.accountId).isEqualTo(accountId)
     }
 

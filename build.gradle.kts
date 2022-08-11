@@ -21,11 +21,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.7.20-Beta")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.postgresql:postgresql:42.3.6")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.flywaydb:flyway-core")
+    implementation("org.jetbrains.exposed", "exposed-core", "0.39.1")
+    implementation("org.jetbrains.exposed", "exposed-dao", "0.39.1")
+    implementation("org.jetbrains.exposed", "exposed-jdbc", "0.39.1")
+    implementation("org.jetbrains.exposed", "spring-transaction", "0.39.1")
 }
 
 tasks.withType<KotlinCompile> {

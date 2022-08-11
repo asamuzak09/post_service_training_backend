@@ -8,14 +8,14 @@ import org.springframework.stereotype.Repository
 @Repository
 class AccountRepository {
 
-    fun create(name: String, accountId: String, encryptPassword: String): AccountEntity? {
+    fun create(accountEntity: AccountEntity): AccountEntity? {
         val id = Users.insertAndGetId {
-            it[Users.name] = name
-            it[Users.accountId] = accountId
-            it[Users.encryptPassword] = encryptPassword
+            it[name] = accountEntity.name
+            it[accountId] = accountEntity.accountId
+            it[encryptPassword] = accountEntity.encryptPassword
         }
 
-        return AccountEntity(id.value, name, accountId, encryptPassword)
+        return AccountEntity(id.value, accountEntity.name, accountEntity.accountId, accountEntity.encryptPassword)
     }
 
     fun findByAccountIdAndPassword(accountId: String, encryptPassword: String): AccountEntity?{

@@ -17,7 +17,7 @@ class AccountController {
 
     @PostMapping("/account/create")
     fun createAccount(@RequestBody request: AccountCreateRequest): AccountResponse {
-        val userAccountDomain = accountCommandUseCase.create(request.name, request.accountId, request.encryptPassword)
+        val userAccountDomain = accountCommandUseCase.create(request.toAccountEntity())
 
         return AccountResponse(userAccountDomain)
     }

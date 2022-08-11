@@ -13,11 +13,6 @@ class AccountReadUseCase {
     lateinit var accountRepository: AccountRepository
 
     fun validateSignIn(accountId: String, encryptPassword: String): AccountEntity? {
-        try {
-            return accountRepository.findByAccountIdAndPassword(accountId, encryptPassword) ?: throw Error("認証失敗")
-        } catch (e: Exception) {
-            throw Error("認証失敗")
-        }
-
+        return accountRepository.findByAccountIdAndPassword(accountId, encryptPassword) ?: throw Error("認証失敗")
     }
 }

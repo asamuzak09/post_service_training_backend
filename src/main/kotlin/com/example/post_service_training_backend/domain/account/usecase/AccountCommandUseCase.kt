@@ -12,7 +12,7 @@ class AccountCommandUseCase {
     @Autowired
     lateinit var accountRepository: AccountRepository
 
-    fun create(name: String, accountId: String, encryptPassword: String): AccountEntity? {
-        return accountRepository.create(name, accountId, encryptPassword)
+    fun create(accountEntity: AccountEntity): AccountEntity? {
+        return accountRepository.create(accountEntity)
     }
 }

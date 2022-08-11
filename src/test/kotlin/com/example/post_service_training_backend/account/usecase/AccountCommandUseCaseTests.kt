@@ -1,5 +1,6 @@
 package com.example.post_service_training_backend.account.usecase
 
+import com.example.post_service_training_backend.domain.account.entity.AccountEntity
 import com.example.post_service_training_backend.domain.account.usecase.AccountCommandUseCase
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -15,9 +16,14 @@ class AccountCommandUseCaseTests {
     @Transactional
     @Test
     fun create() {
-        val accountId = "asamuzak"
-        val userAccountDomain = accountCommandUseCase.create("name", accountId, "encryptPasswordExample")
-        assertThat(userAccountDomain?.accountId).isEqualTo(accountId)
+        val accountEntity = AccountEntity(
+            null,
+            "name",
+            "asamuzak",
+            "encryptPasswordExample"
+        )
+        val userAccountDomain = accountCommandUseCase.create(accountEntity)
+        assertThat(userAccountDomain?.accountId).isEqualTo("asamuzak")
     }
 
 }

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Transactional
 @Service
-class ProfileReadUseCase {
+class ProfileQueryUseCase {
     @Autowired
     lateinit var profileRepository: ProfileRepository
 

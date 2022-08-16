@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Transactional
 @Service
-class AccountReadUseCase {
+class AccountQueryUseCase {
     @Autowired
     lateinit var accountRepository: AccountRepository
 

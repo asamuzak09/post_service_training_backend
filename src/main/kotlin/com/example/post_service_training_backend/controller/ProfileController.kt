@@ -1,7 +1,7 @@
 package com.example.post_service_training_backend.controller
 
 import com.example.post_service_training_backend.domain.profile.usecase.ProfileCommandUseCase
-import com.example.post_service_training_backend.domain.profile.usecase.ProfileReadUseCase
+import com.example.post_service_training_backend.domain.profile.usecase.ProfileQueryUseCase
 import com.example.post_service_training_backend.request.ProfileRegisterRequest
 import com.example.post_service_training_backend.response.ProfileResponse
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,7 +12,7 @@ class ProfileController {
     @Autowired
     lateinit var profileCommandUseCase: ProfileCommandUseCase
     @Autowired
-    lateinit var profileReadUseCase: ProfileReadUseCase
+    lateinit var profileQueryUseCase: ProfileQueryUseCase
 
     @PutMapping("/profile")
     fun registerProfile(@RequestBody request: ProfileRegisterRequest): ProfileResponse {
@@ -23,7 +23,7 @@ class ProfileController {
 
     @GetMapping("/profile/{id}")
     fun getProfile(@PathVariable id: String): ProfileResponse {
-        val profileEntity = profileReadUseCase.find(Integer.parseInt(id))
+        val profileEntity = profileQueryUseCase.find(Integer.parseInt(id))
 
         return ProfileResponse(profileEntity)
     }

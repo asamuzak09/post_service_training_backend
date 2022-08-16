@@ -1,8 +1,5 @@
-create table users
-(
-    id               serial
-        constraint users_pk
-            primary key,
+create table users(
+    id serial constraint users_pk primary key,
     account_id       varchar not null,
     encrypt_password varchar not null,
     name             varchar,
